@@ -1,17 +1,19 @@
-package nepal.dina.parsers;
+package nepal.dina.parsers.pi;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class total_english_pre_intermediate_eng_fra extends
+import org.apache.pdfbox.util.PDFTextStripper;
+import org.apache.pdfbox.util.PDFTextStripperByArea;
+
+public class NewEnglisFilePreIntermediateWordlist extends
 		English_pre_intermediate {
 
-	public total_english_pre_intermediate_eng_fra(String pathName)
+	public NewEnglisFilePreIntermediateWordlist(String pathName)
 			throws IOException {
 		super(pathName);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public ArrayList<String> extract(int cropFirst, int cropLast) {
@@ -48,7 +50,9 @@ public class total_english_pre_intermediate_eng_fra extends
 				continue;
 
 			if (!words.contains(lineArr[0]))
-				words.add(new String(lineArr[0]));
+				
+				
+				words.add(new String(lineArr[0].trim().substring(0, lineArr[0].length()-1)));
 		}
 
 		removeWaste();
@@ -56,4 +60,5 @@ public class total_english_pre_intermediate_eng_fra extends
 		return words;
 	}
 
+	
 }

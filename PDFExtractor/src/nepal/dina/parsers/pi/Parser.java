@@ -1,4 +1,4 @@
-package nepal.dina.parsers;
+package nepal.dina.parsers.pi;
 
 import java.nio.charset.Charset;
 import java.util.ArrayList;
