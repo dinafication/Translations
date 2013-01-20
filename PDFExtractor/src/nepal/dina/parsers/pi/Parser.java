@@ -161,6 +161,7 @@ public abstract class Parser {
 		ret.add("á");	
 		ret.add("ě");	
 		ret.add("//.");	
+		ret.add("/");	
 
 		return ret;
 	}

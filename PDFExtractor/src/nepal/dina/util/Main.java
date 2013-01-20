@@ -18,7 +18,10 @@ import nepal.dina.parsers.pi.NCE_Edge;
 import nepal.dina.parsers.pi.NewEnglisFilePreIntermediateWordlist;
 import nepal.dina.parsers.pi.Parser;
 import nepal.dina.parsers.pi.total_english_pre_intermediate_eng_fra;
+import nepal.dina.parsers.ui.EnglishUpperIntermediate;
 import nepal.dina.parsers.ui.LaserB2;
+import nepal.dina.parsers.ui.PremiumB2EGF;
+import nepal.dina.parsers.ui.UpperIntermediateWordlist;
 import nepal.dina.transalation.GlodsyTranslator;
 
 import org.xml.sax.SAXException;
@@ -37,13 +40,13 @@ public class Main {
 		
 		try {
 			
-			HashSet<String> ret = new HashSet<String>();
-			
-			Parser parser = new LaserB2("res\\levels\\UI\\laser_b2_wordlist.pdf");
-			ArrayList<String> ret1 = parser.extract(11,2);
-			parser.close();
-			ret.addAll(ret1);
-			
+//			HashSet<String> ret = new HashSet<String>();
+//			
+//			Parser parser = new PremiumB2EGF("res\\levels\\UI\\9781405881081_Premium_B2_English_German_French_Wordlist.pdf");
+//			ArrayList<String> ret1 = parser.extract(11,2);
+//			parser.close();
+//			ret.addAll(ret1);
+//			
 //			Parser parser2 = new NewEnglisFilePreIntermediateWordlist("res\\levels\\PI\\prevedno\\New English File Pre-Intermediate Wordlist.pdf");
 //			ArrayList<String> ret2 = parser2.extract(7,2);
 //			parser.close();
@@ -51,7 +54,7 @@ public class Main {
 			
 //			Parser parser3 = new total_english_pre_intermediate_eng_fra("res\\levels\\PI\\prevedno\\total-english-pre-intermediate-eng-fra.pdf");
 //			ArrayList<String> ret3 = parser3.extract(5,2);
-//			parser3.close();
+//			parser3.close(); 
 //			ret.addAll(ret3);
 //			
 			
@@ -70,32 +73,32 @@ public class Main {
 			/**
 			 * 3. Ucitaj rijeci iz fila.
 			 * */
-			//HashSet<String> words = FileIO.readFromFile("res\\wordlists\\UI\\UI_2");
+			HashSet<String> words = FileIO.readFromFile("res\\wordlists\\UI\\UI_6");
 			//HashSet<String> words = FileIO.readFromFile("res\\levels\\PI\\PI_1");
 			
 			
 			/**
 			 * 4. Prevedi.
 			 * */
-//			Language from = Language.ENGLISH;
-//			Language dest = Language.GERMAN;
-//			GlodsyTranslator gt = new GlodsyTranslator(from, dest);
-//			HashMap<String, HashSet<String>> wordsNTranslations = gt.translateAll(words);
-//			JsonIO jio = new JsonIO();
-//			String jios = null;			
-//			
-//			WordTranslationList list = new WordTranslationList();
-//			for(String word:wordsNTranslations.keySet()){
-//				list.addWT(new WordTranslation(word, wordsNTranslations.get(word)));
-//			}
-//			
-//			jios = jio.getString(list);
-//			
+			Language from = Language.ENGLISH;
+			Language dest = Language.GERMAN;
+			GlodsyTranslator gt = new GlodsyTranslator(from, dest);
+			HashMap<String, HashSet<String>> wordsNTranslations = gt.translateAll(words);
+			JsonIO jio = new JsonIO();
+			String jios = null;			
+			
+			WordTranslationList list = new WordTranslationList();
+			for(String word:wordsNTranslations.keySet()){
+				list.addWT(new WordTranslation(word, wordsNTranslations.get(word)));
+			}
+			
+			jios = jio.getString(list);
+			
 			
 			/**
 			 * 5. Upisi u file.
 			 * */
-			//FileIO.appendFile("res\\translations\\UI\\UI_eng_ger_2", jios);
+			FileIO.appendFile("res\\translations\\UI\\UI_eng_ger_6", jios);
 			
 		}
 		catch (IOException e) {
