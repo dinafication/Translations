@@ -2,6 +2,7 @@ package nepal.dina.io;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -38,29 +39,53 @@ public class FileIO {
 	}
 	
 	public static void appendFile(String fileName, String translations)
-			throws IOException {
+			 {
 
-		PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(fileName, true)));
-	    out.println(translations);
-	    out.close();
+		PrintWriter out = null;
+		try {
+			out = new PrintWriter(new BufferedWriter(new FileWriter(fileName, true)));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			out.println(translations);
+		    out.close();
+		}
+	    
 	}
 
-	public static HashSet<String> readFromFile(String fileName)
-			throws IOException {
+	public static HashSet<String> readFromFile(String fileName){
 
-		FileReader fstream = new FileReader(fileName);
-		BufferedReader out = new BufferedReader(fstream);
+		FileReader fstream = null;
+		BufferedReader out = null;
+		HashSet<String> words = null;
+		
+		try {
+			fstream = new FileReader(fileName);
+			out = new BufferedReader(fstream);
 
-		HashSet<String> words = new HashSet<String>();
+			words = new HashSet<String>();
 
-		String pom = out.readLine();
-		while (pom != null) {
-			words.add(pom);
-			pom = out.readLine();
+			String pom = out.readLine();
+			while (pom != null) {
+				words.add(pom);
+				pom = out.readLine();
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-
-		out.close();
-
+		finally{
+			try {
+				out.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 		return words;
 	}
 

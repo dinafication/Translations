@@ -82,6 +82,20 @@ public abstract class Parser {
 
 		words = ret;
 	}
+	
+	protected void removeBrackets(){
+		
+		ArrayList<String> ret = new ArrayList<String>();
+		
+		for(String word:words){
+			if(word.contains("(") && word.contains(")")){
+				word = word.substring(word.length()-3, word.length());
+			}
+			ret.add(word);
+		}
+		
+		words = ret;
+	}
 
 	public abstract void close();
 
@@ -146,6 +160,7 @@ public abstract class Parser {
 		ret.add("ě");	
 		ret.add("á");	
 		ret.add("ě");	
+		ret.add("//.");	
 
 		return ret;
 	}

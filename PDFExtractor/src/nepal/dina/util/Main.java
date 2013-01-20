@@ -14,6 +14,7 @@ import nepal.dina.io.FileIO;
 import nepal.dina.io.JsonIO;
 import nepal.dina.io.XMLWriter1;
 import nepal.dina.parsers.English_pre_intermediate;
+import nepal.dina.parsers.NCE_Edge;
 import nepal.dina.parsers.NewEnglisFilePreIntermediateWordlist;
 import nepal.dina.parsers.Parser;
 import nepal.dina.parsers.total_english_pre_intermediate_eng_fra;
@@ -37,16 +38,16 @@ public class Main {
 			
 			HashSet<String> ret = new HashSet<String>();
 			
-//			Parser parser = new English_pre_intermediate("res\\levels\\PI\\prevedno\\English_pre_intermediate.pdf");
+//			Parser parser = new NCE_Edge("res\\levels\\PI\\9780582825093_NCE_Edge_Pre_Intermediate_English_German_Wordlist.pdf");
 //			ArrayList<String> ret1 = parser.extract(11,2);
 //			parser.close();
 //			ret.addAll(ret1);
-//			
+			
 //			Parser parser2 = new NewEnglisFilePreIntermediateWordlist("res\\levels\\PI\\prevedno\\New English File Pre-Intermediate Wordlist.pdf");
 //			ArrayList<String> ret2 = parser2.extract(7,2);
 //			parser.close();
 //			ret.addAll(ret2);
-//			
+			
 //			Parser parser3 = new total_english_pre_intermediate_eng_fra("res\\levels\\PI\\prevedno\\total-english-pre-intermediate-eng-fra.pdf");
 //			ArrayList<String> ret3 = parser3.extract(5,2);
 //			parser3.close();
@@ -54,20 +55,33 @@ public class Main {
 //			
 			
 			
+			/**
+			 * 1. Upisi extrahirane, neprevedene rijeci u file.
+			 * */
 			//FileIO.writeInFile("res\\levels\\PI\\PI", ret);
-			//FileIO.writeInFile("res\\wordLists\\PI", ret);
 			
-			HashSet<String> words = FileIO.readFromFile("res\\wordlists\\PI_1");
+			
+			/**
+			 * 2. Raspodijeli file u vise filova, tako da imaju manje od 500 entrija.
+			 * */
+			
+			
+			/**
+			 * 3. Ucitaj rijeci iz fila.
+			 * */
+			HashSet<String> words = FileIO.readFromFile("res\\wordlists\\PI_4");
 			//HashSet<String> words = FileIO.readFromFile("res\\levels\\PI\\PI_1");
 			
 			
+			/**
+			 * 4. Prevedi.
+			 * */
 			Language from = Language.ENGLISH;
 			Language dest = Language.GERMAN;
 			GlodsyTranslator gt = new GlodsyTranslator(from, dest);
 			HashMap<String, HashSet<String>> wordsNTranslations = gt.translateAll(words);
 			JsonIO jio = new JsonIO();
-			String jios = null;
-			
+			String jios = null;			
 			
 			WordTranslationList list = new WordTranslationList();
 			for(String word:wordsNTranslations.keySet()){
@@ -76,11 +90,15 @@ public class Main {
 			
 			jios = jio.getString(list);
 			
-			FileIO.appendFile("res\\translations\\PI_eng_ger", jios);
 			
+			/**
+			 * 5. Upisi u file.
+			 * */
+			FileIO.appendFile("res\\translations\\PI_eng_ger_4", jios);
+//			
 		}
 		catch (IOException e) {
-			// TODO Auto-generated catch block
+			 
 			e.printStackTrace();
 		}
 		
