@@ -15,6 +15,7 @@ import nepal.dina.io.JsonIO;
 import nepal.dina.io.XMLWriter1;
 import nepal.dina.io.parsers.e.ElementaryWordlist;
 import nepal.dina.io.parsers.e.EngElementary;
+import nepal.dina.io.parsers.e.TotalnEnglishElementary;
 import nepal.dina.parsers.Parser;
 import nepal.dina.parsers.pi.English_pre_intermediate;
 import nepal.dina.parsers.pi.NCE_Edge;
@@ -44,7 +45,7 @@ public class Main {
 			
 //			HashSet<String> ret = new HashSet<String>();
 //			
-//			Parser parser = new ElementaryWordlist("res\\levels\\E\\Elementary Wordlist.pdf");
+//			Parser parser = new TotalnEnglishElementary("res\\levels\\E\\Total_English_Elementary_Wordlist_English_-_Dutch_-_French.pdf");
 //			ArrayList<String> ret1 = parser.extract(11,2);
 //			parser.close();
 //			ret.addAll(ret1);
@@ -75,7 +76,7 @@ public class Main {
 			/**
 			 * 3. Ucitaj rijeci iz fila.
 			 * */
-			HashSet<String> words = FileIO.readFromFile("res\\wordlists\\E\\E_3");
+			HashSet<String> words = FileIO.readFromFile("res\\wordlists\\E\\E_6");
 			//HashSet<String> words = FileIO.readFromFile("res\\levels\\PI\\PI_1");
 			
 			
@@ -100,7 +101,7 @@ public class Main {
 			/**
 			 * 5. Upisi u file.
 			 * */
-			FileIO.appendFile("res\\translations\\E\\E_eng_ger_3", jios);
+			FileIO.appendFile("res\\translations\\E\\E_eng_ger_6", jios);
 			
 		}
 		catch (IOException e) {
