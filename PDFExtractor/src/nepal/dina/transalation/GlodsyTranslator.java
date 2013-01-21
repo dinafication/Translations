@@ -92,8 +92,7 @@ public class GlodsyTranslator extends Translator {
 		HashSet<String> translations = null;
 		
 		for(String w:words){
-			////
-			if(w.trim().contains(" "))continue;
+			
 			
 			translations = translate(w);
 			// is OK

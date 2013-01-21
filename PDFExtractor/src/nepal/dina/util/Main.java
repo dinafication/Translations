@@ -17,6 +17,7 @@ import nepal.dina.io.parsers.e.ElementaryWordlist;
 import nepal.dina.io.parsers.e.EngElementary;
 import nepal.dina.io.parsers.e.TotalnEnglishElementary;
 import nepal.dina.parsers.Parser;
+import nepal.dina.parsers.i.EngInt;
 import nepal.dina.parsers.pi.English_pre_intermediate;
 import nepal.dina.parsers.pi.NCE_Edge;
 import nepal.dina.parsers.pi.NewEnglisFilePreIntermediateWordlist;
@@ -45,11 +46,11 @@ public class Main {
 			
 //			HashSet<String> ret = new HashSet<String>();
 //			
-//			Parser parser = new TotalnEnglishElementary("res\\levels\\E\\Total_English_Elementary_Wordlist_English_-_Dutch_-_French.pdf");
+//			Parser parser = new EngInt("res\\levels\\I\\English_intermediate.pdf");
 //			ArrayList<String> ret1 = parser.extract(11,2);
 //			parser.close();
 //			ret.addAll(ret1);
-			
+//			
 //			Parser parser2 = new NewEnglisFilePreIntermediateWordlist("res\\levels\\PI\\prevedno\\New English File Pre-Intermediate Wordlist.pdf");
 //			ArrayList<String> ret2 = parser2.extract(7,2);
 //			parser.close();
@@ -65,7 +66,7 @@ public class Main {
 			/**
 			 * 1. Upisi extrahirane, neprevedene rijeci u file.
 			 * */
-		//FileIO.writeInFile("res\\levels\\E\\E", ret);
+		//FileIO.writeInFile("res\\levels\\I\\I", ret);
 			
 			
 			/**
@@ -76,7 +77,7 @@ public class Main {
 			/**
 			 * 3. Ucitaj rijeci iz fila.
 			 * */
-			HashSet<String> words = FileIO.readFromFile("res\\wordlists\\A\\A_1");
+			HashSet<String> words = FileIO.readFromFile("res\\wordlists\\I\\I_2");
 			//HashSet<String> words = FileIO.readFromFile("res\\levels\\PI\\PI_1");
 			
 			
@@ -101,7 +102,7 @@ public class Main {
 			/**
 			 * 5. Upisi u file.
 			 * */
-			FileIO.appendFile("res\\translations\\A\\A_eng_ger_1", jios);
+		FileIO.appendFile("res\\translations\\I\\I_eng_ger_2", jios);
 			
 		}
 		catch (IOException e) {
