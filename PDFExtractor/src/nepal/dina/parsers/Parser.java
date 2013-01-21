@@ -1,14 +1,28 @@
-package nepal.dina.parsers.pi;
+package nepal.dina.parsers;
 
+import java.io.File;
+import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.util.PDFTextStripper;
+
 public abstract class Parser {
 
+	protected PDDocument pddDocument;
+	protected PDFTextStripper textStripper;
 	protected ArrayList<String> words;
+
+	public Parser(String pathName) throws IOException {
+
+		pddDocument = PDDocument.load(new File(pathName));
+		textStripper = new PDFTextStripper();
+		words = new ArrayList<String>();
+	}
 
 	public abstract ArrayList<String> extract(int cropFirst, int cropLast);
 
@@ -82,18 +96,18 @@ public abstract class Parser {
 
 		words = ret;
 	}
-	
-	protected void removeBrackets(){
-		
+
+	protected void removeBrackets() {
+
 		ArrayList<String> ret = new ArrayList<String>();
-		
-		for(String word:words){
-			if(word.contains("(") && word.contains(")")){
-				word = word.substring(word.length()-3, word.length());
+
+		for (String word : words) {
+			if (word.contains("(") && word.contains(")")) {
+				word = word.substring(word.length() - 3, word.length());
 			}
 			ret.add(word);
 		}
-		
+
 		words = ret;
 	}
 
@@ -152,16 +166,16 @@ public abstract class Parser {
 		ret.add("Î");
 		ret.add("¸");
 		ret.add("θ");
-		
-		ret.add("š");	
-		ret.add("@");	
-		ret.add("ř");	
-		ret.add("ý");	
-		ret.add("ě");	
-		ret.add("á");	
-		ret.add("ě");	
-		ret.add("//.");	
-		ret.add("/");	
+
+		ret.add("š");
+		ret.add("@");
+		ret.add("ř");
+		ret.add("ý");
+		ret.add("ě");
+		ret.add("á");
+		ret.add("ě");
+		ret.add("//.");
+		ret.add("/");
 
 		return ret;
 	}

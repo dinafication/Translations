@@ -1,7 +1,7 @@
 package nepal.dina.parsers.ui;
 
 
-import nepal.dina.parsers.pi.Parser;
+import nepal.dina.parsers.Parser;
 import nepal.dina.util.Help;
 
 import java.io.File;
@@ -16,16 +16,9 @@ import org.apache.pdfbox.util.PDFTextStripper;
 
 public class PremiumB2EGF extends Parser {
 		
-		protected PDDocument pddDocument;
-		protected PDFTextStripper textStripper;
-
 		public PremiumB2EGF(String pathName) throws IOException {
 
-			// izvuci text iz pdfa
-			pddDocument = PDDocument.load(new File(pathName));
-			textStripper = new PDFTextStripper();
-			
-			words = new ArrayList<String>();
+			super(pathName);
 		}
 
 		protected List<String> cropLines(List<String> lines, int firstNum, int lastNum) {

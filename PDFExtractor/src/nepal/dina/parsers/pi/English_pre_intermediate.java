@@ -1,5 +1,6 @@
 package nepal.dina.parsers.pi;
 
+import nepal.dina.parsers.Parser;
 import nepal.dina.util.Help;
 
 import java.io.File;
@@ -13,17 +14,10 @@ import org.apache.pdfbox.util.PDFTextStripper;
 
 public class English_pre_intermediate extends Parser {
 
-	
-	protected PDDocument pddDocument;
-	protected PDFTextStripper textStripper;
 
 	public English_pre_intermediate(String pathName) throws IOException {
 
-		// izvuci text iz pdfa
-		pddDocument = PDDocument.load(new File(pathName));
-		textStripper = new PDFTextStripper();
-		
-		words = new ArrayList<String>();
+		super(pathName);
 	}
 
 	protected List<String> cropLines(List<String> lines, int firstNum, int lastNum) {
