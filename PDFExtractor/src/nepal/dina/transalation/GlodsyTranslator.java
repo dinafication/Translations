@@ -31,12 +31,14 @@ public class GlodsyTranslator extends Translator {
 	 * */
 	public HashSet<String> translate(String word) throws Exception {
 		
+		
+		
 		StringBuilder query = new StringBuilder();
 		query.append("http://glosbe.com/gapi/translate?");
 		query.append("from=" + "eng");
 		query.append("&dest=" + "de");
 		query.append("&format=json&");
-		query.append("phrase=" + word);
+		query.append("phrase=" + word.trim());
 		query.append("&pretty=true");
 		
 		System.out.println(query.toString());
@@ -91,6 +93,7 @@ public class GlodsyTranslator extends Translator {
 		
 		for(String w:words){
 			////
+			if(w.trim().contains(" "))continue;
 			
 			translations = translate(w);
 			// is OK
