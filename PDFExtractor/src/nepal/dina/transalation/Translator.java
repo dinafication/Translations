@@ -19,7 +19,11 @@ public abstract class Translator {
 				
 	}
 	
-	public abstract HashSet<String> translate(String word) throws Exception;
 	
-	public abstract HashMap<String, HashSet<String>> translateAll(HashSet<String> words) throws Exception;
+	public abstract HashMap<String, HashSet<String>> translateAll(HashSet<String> words, String dest) throws Exception;
+
+	public HashSet<String> translate(String word, String dest) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

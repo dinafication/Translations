@@ -78,7 +78,7 @@ public class Main {
 			/**
 			 * 3. Ucitaj rijeci iz fila.
 			 * */
-			HashSet<String> words = FileIO.readFromFile("res\\wordlists\\I\\I_8");
+			HashSet<String> words = FileIO.readFromFile("res\\wordlists\\I\\I_5");
 			//HashSet<String> words = FileIO.readFromFile("res\\levels\\PI\\PI_1");
 			
 			
@@ -86,9 +86,9 @@ public class Main {
 			 * 4. Prevedi.
 			 * */
 			Language from = Language.ENGLISH;
-			Language dest = Language.GERMAN;
+			Language dest = Language.FRENCH;
 			GlodsyTranslator gt = new GlodsyTranslator(from, dest);
-			HashMap<String, HashSet<String>> wordsNTranslations = gt.translateAll(words);
+			HashMap<String, HashSet<String>> wordsNTranslations = gt.translateAll(words, "fra");
 			JsonIO jio = new JsonIO();
 			String jios = null;			
 			
@@ -103,7 +103,7 @@ public class Main {
 			/**
 			 * 5. Upisi u file.
 			 * */
-		FileIO.appendFile("res\\translations\\I\\I_eng_ger_8", jios);
+		FileIO.appendFile("res\\translations\\french\\I\\I_eng_fra_5", jios);
 			
 		}
 		catch (IOException e) {

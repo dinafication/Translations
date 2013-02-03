@@ -29,14 +29,14 @@ public class GlodsyTranslator extends Translator {
 	/**
 	 * http://glosbe.com/gapi/translate?from=eng&dest=fra&format=json&phrase=cat&pretty=true
 	 * */
-	public HashSet<String> translate(String word) throws Exception {
+	public HashSet<String> translate(String word, String dest) throws Exception {
 		
 		
 		
 		StringBuilder query = new StringBuilder();
 		query.append("http://glosbe.com/gapi/translate?");
 		query.append("from=" + "eng");
-		query.append("&dest=" + "de");
+		query.append("&dest=" + dest);
 		query.append("&format=json&");
 		query.append("phrase=" + word.trim());
 		query.append("&pretty=true");
@@ -85,16 +85,24 @@ public class GlodsyTranslator extends Translator {
 		return translations;
 	}
 
+	/**
+	 * http://en.wikipedia.org/wiki/List_of_ISO_639-3_codes
+	 * */
 	@Override
-	public HashMap<String, HashSet<String>> translateAll(HashSet<String> words) throws Exception {
+	public HashMap<String, HashSet<String>> translateAll(HashSet<String> words, String dest) throws Exception {
 		
 		HashMap<String, HashSet<String>> ret = new HashMap<String, HashSet<String>>();
 		HashSet<String> translations = null;
 		
 		for(String w:words){
 			
+		try{
+			translations = translate(w, dest);
+		}
+		catch(Exception e){
+			continue;
+		}
 			
-			translations = translate(w);
 			// is OK
 			if(translations != null){
 				ret.put(w, translations);

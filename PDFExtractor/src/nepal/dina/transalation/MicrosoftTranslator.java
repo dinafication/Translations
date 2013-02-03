@@ -29,7 +29,7 @@ public class MicrosoftTranslator extends Translator{
 
 
 	@Override
-	public HashSet<String> translate(String word) throws Exception {
+	public HashSet<String> translate(String word, String dest) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -37,7 +37,7 @@ public class MicrosoftTranslator extends Translator{
 
 
 	@Override
-	public HashMap<String, HashSet<String>> translateAll(HashSet<String> words)
+	public HashMap<String, HashSet<String>> translateAll(HashSet<String> words, String dest)
 			throws Exception {
 		// TODO Auto-generated method stub
 		return null;
