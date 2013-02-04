@@ -78,7 +78,7 @@ public class Main {
 			/**
 			 * 3. Ucitaj rijeci iz fila.
 			 * */
-			HashSet<String> words = FileIO.readFromFile("res\\wordlists\\I\\I_5");
+			HashSet<String> words = FileIO.readFromFile("res\\wordlists\\I\\I_2");
 			//HashSet<String> words = FileIO.readFromFile("res\\levels\\PI\\PI_1");
 			
 			
@@ -103,7 +103,7 @@ public class Main {
 			/**
 			 * 5. Upisi u file.
 			 * */
-		FileIO.appendFile("res\\translations\\french\\I\\I_eng_fra_5", jios);
+		FileIO.appendFile("res\\translations\\talian\\I\\I_eng_tal_2", jios);
 			
 		}
 		catch (IOException e) {
